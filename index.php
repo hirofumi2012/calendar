@@ -40,7 +40,7 @@
 					$lastday = date( 't', $timestamp );
 					$sunday = 1 - date( 'w', $timestamp );
 					while ( $sunday <= $lastday ) {
-						echo '<tr>', PHP_EOL;
+						echo '<tr>';
 						$day = $sunday;
 						$sunday += 7;
 						while ( $day < $sunday ) {
