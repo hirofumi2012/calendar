@@ -6,11 +6,7 @@
 	<title>カレンダー</title>
 </head>
 <?php
-	if ( isset( $_GET['month'] ) && strtotime( $_GET['month'] ) ) {
-		$month = $_GET['month'];
-	} else {
-		$month = date( 'Y-m' );
-	}
+$timestamp = filter_input( INPUT_GET, 'month', FILTER_CALLBACK, [ 'options' => 'strtotime' ] ) ?: time();
 ?>
 <body>
 	<h1>カレンダー</h1>
@@ -18,7 +14,7 @@
 	<div class="calendar">
 		<div class="nav">
 			<form action="/">
-				<input type="month" name="month" value="<?php echo $month; ?>">
+				<input type="month" name="month" value="<?php echo date( 'Y-m', $timestamp ); ?>">
 				<button>移動</button>
 			</form>
 		</div>
@@ -36,7 +32,6 @@
 			</thead>
 			<tbody>
 				<?php
-					$timestamp = strtotime( $month );
 					$lastday = date( 't', $timestamp );
 					$sunday = 1 - date( 'w', $timestamp );
 					while ( $sunday <= $lastday ) {
