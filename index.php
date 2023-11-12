@@ -6,7 +6,7 @@
 	<title>カレンダー</title>
 </head>
 <?php
-$timestamp = filter_input( INPUT_GET, 'month', FILTER_CALLBACK, [ 'options' => 'strtotime' ] ) ?: time();
+$timestamp = filter_input( INPUT_GET, 'month', FILTER_CALLBACK, [ 'options' => 'strtotime' ] ) ?: strtotime( 'first day of this month' );
 ?>
 <body>
 	<h1>カレンダー</h1>
