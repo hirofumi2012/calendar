@@ -33,11 +33,10 @@ $timestamp = filter_input( INPUT_GET, 'month', FILTER_CALLBACK, [ 'options' => '
 			<tbody>
 				<?php
 					$lastday = date( 't', $timestamp );
-					$sunday = 1 - date( 'w', $timestamp );
-					while ( $sunday <= $lastday ) {
+					$day = 1 - date( 'w', $timestamp );
+					while ( $day <= $lastday ) {
 						echo '<tr>';
-						$day = $sunday;
-						$sunday += 7;
+						$sunday = $day + 7;
 						while ( $day < $sunday ) {
 							echo '<td>';
 							if ( $day >= 1 && $day <= $lastday ) {
